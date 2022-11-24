@@ -3,18 +3,18 @@ import {Slider, Input, Divider} from 'antd';
 
 
 type SettingProps = {
-    numberButtons: number
+    maxNumberInKeyBoard: number
 }
 
-const password = function getPassword(numberButtons: number, length: number) {
+const password = function getPassword(maxNumberInKeyBoard: number, length: number) {
     let password = ''
     for (let i = 0; i < length; i++) {
-        password += '' + Math.floor(Math.random() * numberButtons) + '';
+        password += '' + Math.floor(Math.random() * maxNumberInKeyBoard) + '';
     }
     return password;
 }
 
-const SettingForm: FC<SettingProps> = ({ numberButtons = 9}) => {
+const SettingForm: FC<SettingProps> = ({ maxNumberInKeyBoard = 9}) => {
     const [passwordLength, setInputValue] = useState(2);
 
     const onChange = (newValue: number) => {
@@ -32,7 +32,7 @@ const SettingForm: FC<SettingProps> = ({ numberButtons = 9}) => {
                 value={passwordLength}
             />
             <p>Generated password:</p>
-            <Input.Password value={password(numberButtons, passwordLength)} />
+            <Input.Password value={password(maxNumberInKeyBoard, passwordLength)} />
         </div>
     )
 };
