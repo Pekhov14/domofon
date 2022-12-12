@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react';
+import React, {FC} from 'react';
 import {Button, Col, Divider, Row} from "antd";
 import {CalculatorOutlined, ClearOutlined} from "@ant-design/icons";
 
@@ -9,16 +9,18 @@ const style: React.CSSProperties = {
 };
 
 type IntercomForm = {
-    maxNumberInKeyBoard: number
+    maxNumberInKeyBoard: number,
+    password: number
 }
 
-const IntercomForm: FC<IntercomForm> = ({maxNumberInKeyBoard= 9}) => {
+const IntercomForm: FC<IntercomForm> = ({maxNumberInKeyBoard= 9, password}) => {
     return (
         <>
             <Divider orientation="left">Intercom</Divider>
 
             <div style={{paddingBottom: "10px"}}>
-                <span style={{fontSize: "40px", margin: "0 auto"}}>31 _ _</span>
+                {password}
+                <span style={{fontSize: "40px", margin: "0 auto"}}>----</span>
             </div>
 
             <Row gutter={[16, 16]}>

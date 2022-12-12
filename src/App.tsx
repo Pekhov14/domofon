@@ -7,13 +7,38 @@ import IntercomForm from "./components/IntercomForm";
 const {Content} = Layout;
 const maxNumberInKeyBoard = 9;
 
+export type passwordData = {
+    password: number | undefined;
+    password_length: number | undefined;
+}
+
+const defaultPasswordData = {
+    password: undefined,
+    password_length: undefined
+}
+
 const App: React.FC = () => {
+
+    const [password, setPassword] = useState<passwordData>(defaultPasswordData);
+
+    const handlePasswordChange = (passwordData: passwordData) => {
+        setPassword({ ...passwordData });
+    };
+
     return (
         <Layout>
             <Content style={{ padding: '50px', width: '500px', margin: '0 auto' }}>
-                <SettingForm maxNumberInKeyBoard={maxNumberInKeyBoard} />
+                <h2>{JSON.stringify(password)}</h2>
 
-                <IntercomForm maxNumberInKeyBoard={maxNumberInKeyBoard}/>
+                <SettingForm
+                    handlePasswordChange={handlePasswordChange}
+                    maxNumberInKeyBoard={maxNumberInKeyBoard}
+                />
+
+                <IntercomForm
+                    maxNumberInKeyBoard={maxNumberInKeyBoard}
+                    password={7711}
+                />
             </Content>
         </Layout>
     )
