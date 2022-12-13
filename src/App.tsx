@@ -28,7 +28,7 @@ const App: React.FC = () => {
     return (
         <Layout>
             <Content style={{ padding: '50px', width: '500px', margin: '0 auto' }}>
-                <h2>{JSON.stringify(password)}</h2>
+                {/*<h2>{JSON.stringify(password)}</h2>*/}
 
                 <SettingForm
                     handlePasswordChange={handlePasswordChange}
@@ -37,7 +37,7 @@ const App: React.FC = () => {
 
                 <IntercomForm
                     maxNumberInKeyBoard={maxNumberInKeyBoard}
-                    password={7711}
+                    password={password}
                 />
             </Content>
         </Layout>
