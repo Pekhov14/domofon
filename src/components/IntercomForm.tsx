@@ -1,5 +1,5 @@
 import React, {FC, useState} from 'react';
-import {Button, Col, Divider, Row} from "antd";
+import {Button, Col, Divider, message, Row} from "antd";
 import {CalculatorOutlined, ClearOutlined} from "@ant-design/icons";
 import {passwordData} from "../App";
 
@@ -52,6 +52,21 @@ const IntercomForm: FC<IntercomForm> = ({maxNumberInKeyBoard= 9, password}) => {
         setInputPassword(concatPassword);
     }
 
+    const handleClearKeyboard = () => () => {
+        setInputPassword('');
+    }
+
+    const handleCheckPassword = () => () => {
+        // @ts-ignore
+        if (+inputPassword === password.password) {
+            message.success('Success!')
+                .then(r => window.location.replace('https://www.youtube.com/watch?v=PFId4zMzpoM'));
+        }
+
+        message.error('Try again!')
+            .then(r => setInputPassword(''));
+    }
+
     return (
         <>
             <Divider orientation="left">Intercom</Divider>
@@ -81,6 +96,7 @@ const IntercomForm: FC<IntercomForm> = ({maxNumberInKeyBoard= 9, password}) => {
                             value="clear"
                             key="clear"
                             style={style}
+                            onClick={handleClearKeyboard()}
                     ><ClearOutlined /></Button>
                 </Col>
                 <Col span={8}>
@@ -96,6 +112,7 @@ const IntercomForm: FC<IntercomForm> = ({maxNumberInKeyBoard= 9, password}) => {
                             value="go"
                             key="go"
                             style={style}
+                            onClick={handleCheckPassword()}
                     ><CalculatorOutlined /></Button>
                 </Col>
             </Row>
